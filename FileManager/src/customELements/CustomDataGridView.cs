@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,36 +11,116 @@ namespace FileManager
 {
     class CustomDataGridView : DataGridView
     {
-        [System.Security.Permissions.UIPermission(
-       System.Security.Permissions.SecurityAction.LinkDemand,
-       Window = System.Security.Permissions.UIPermissionWindow.AllWindows)]
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            Console.WriteLine("ProcessDialogKey");
-            // Extract the key code from the key value. 
-            Keys key = (keyData & Keys.KeyCode);
+        private bool enableDragAndDrop = false;
+        private string testFilePath = @"C:/Users/Azat/Documents/test.txt";
 
-            // Handle the ENTER key as if it were a RIGHT ARROW key. 
-            if (key == Keys.Enter)
-            {
-                return this.ProcessRightKey(keyData);
-            }
-            return base.ProcessDialogKey(keyData);
+        public CustomDataGridView()
+        {
+            this.MouseMove += CustomMouseMove;
+            this.MouseUp += CustomMouseUp;
+            this.MouseUp += CustomSelectElement;
+            this.MouseLeave += CustomMouseLeave;
+            this.ClearSelection();
         }
 
-        [System.Security.Permissions.SecurityPermission(
-            System.Security.Permissions.SecurityAction.LinkDemand, Flags =
-            System.Security.Permissions.SecurityPermissionFlag.UnmanagedCode)]
-        protected override bool ProcessDataGridViewKey(KeyEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
-            Console.WriteLine("ProcessDataGridViewKey");
-
-            // Handle the ENTER key as if it were a RIGHT ARROW key. 
-            if (e.KeyCode == Keys.Enter)
-            {
-                return this.ProcessRightKey(e.KeyData);
-            }
-            return base.ProcessDataGridViewKey(e);
+            //base.OnMouseDown(e);
         }
+
+        private void CustomMouseMove(object sender, MouseEventArgs e)
+        {
+
+            if (!enableDragAndDrop && (e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                Console.WriteLine("Enable drag and drop");
+                enableDragAndDrop = true;
+                string[] files = new String[1];
+                files[0] = testFilePath;
+                DataObject data = new DataObject(DataFormats.FileDrop, files);
+                data.SetData(DataFormats.StringFormat, files[0]);
+                DoDragDrop(data, DragDropEffects.Copy);
+            }
+
+        }
+
+        private void CustomSelectElement(object sender, MouseEventArgs e)
+        {
+            int index = this.HitTest(e.X, e.Y).RowIndex;
+            if (index != -1)
+            {
+                if (Control.ModifierKeys != Keys.Control)
+                {
+                    this.ClearSelection();
+                }
+                DataGridViewRow row = this.Rows[index];
+                row.Selected = !row.Selected;
+            }
+        }
+
+        private void CustomMouseUp(object sender, MouseEventArgs e)
+        {
+            enableDragAndDrop = false;
+        }
+
+        private void CustomMouseLeave(object sender, EventArgs e)
+        {
+            enableDragAndDrop = false;
+        }
+
+        public void SetData(string[,] data)
+        {
+            this.DataSource = GetDataTable(data);
+        }
+
+        public void SetData(List<List<string>> data)
+        {
+            this.DataSource = GetDataTable(data);
+        }
+
+        public static DataTable GetDataTable(string[,] data)
+        {
+            if (data.GetLength(0) == 0)
+            {
+                throw new ArgumentException("data is empty");
+            }
+            DataTable table = new DataTable();
+
+            for (int i = 0; i < data.GetLength(1); i++)
+            {
+                table.Columns.Add();
+            }
+            for (int i = 0; i < data.GetLength(0); i++)
+            {
+                table.Rows.Add(table.NewRow());
+                for (int j = 0; j < data.GetLength(1); j++)
+                {
+                    table.Rows[i][j] = data[i, j];
+                }
+            }
+            return table;
+        }
+
+        public static DataTable GetDataTable(List<List<string>> data)
+        {
+            if (data.Count == 0)
+            {
+                throw new ArgumentException("data is empty");
+            }
+            DataTable table = new DataTable();
+
+            data.First().ForEach(element => table.Columns.Add());
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                table.Rows.Add(table.NewRow());
+                for (int j = 0; j < data.First().Count; j++)
+                {
+                    table.Rows[i][j] = data[i][j];
+                }
+            }
+            return table;
+        }
+
     }
 }

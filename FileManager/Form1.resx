@@ -142,7 +142,7 @@
     <value>40</value>
   </data>
   <data name="dataGridViewOne.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 438</value>
+    <value>272, 413</value>
   </data>
   <data name="dataGridViewOne.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -151,7 +151,7 @@
     <value>dataGridViewOne</value>
   </data>
   <data name="&gt;&gt;dataGridViewOne.Type" xml:space="preserve">
-    <value>FileManager.CustomDataGridView, FileManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>FileManager.FilesDataGridView, FileManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewOne.Parent" xml:space="preserve">
     <value>panelOneData</value>
@@ -166,7 +166,7 @@
     <value>0, 26</value>
   </data>
   <data name="panelOneData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 438</value>
+    <value>272, 413</value>
   </data>
   <data name="panelOneData.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -190,7 +190,7 @@
     <value>0, 0</value>
   </data>
   <data name="panelOneChoseDisk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 26</value>
+    <value>272, 26</value>
   </data>
   <data name="panelOneChoseDisk.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -225,17 +225,23 @@
   <data name="dataGridViewTwo.Location" type="System.Drawing.Point, System.Drawing">
     <value>35, 26</value>
   </data>
+  <data name="dataGridViewTwo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="dataGridViewTwo.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
   <data name="dataGridViewTwo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>353, 438</value>
+    <value>276, 413</value>
   </data>
   <data name="dataGridViewTwo.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;dataGridViewTwo.Name" xml:space="preserve">
     <value>dataGridViewTwo</value>
   </data>
   <data name="&gt;&gt;dataGridViewTwo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>FileManager.FilesDataGridView, FileManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewTwo.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -253,7 +259,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 464</value>
+    <value>35, 439</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -280,7 +286,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="panelTwoChoseDisk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>363, 26</value>
+    <value>286, 26</value>
   </data>
   <data name="panelTwoChoseDisk.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -310,10 +316,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>749, 464</value>
+    <value>587, 439</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>357</value>
+    <value>272</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -343,7 +349,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>749, 24</value>
+    <value>587, 24</value>
   </data>
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -394,10 +400,10 @@
     <value>Bottom</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 488</value>
+    <value>0, 463</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>749, 30</value>
+    <value>587, 30</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -427,7 +433,7 @@
     <value>None</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>749, 518</value>
+    <value>587, 493</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>FileManager</value>

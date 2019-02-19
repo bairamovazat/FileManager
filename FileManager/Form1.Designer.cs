@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panelOneData = new System.Windows.Forms.Panel();
-            this.dataGridViewOne = new FileManager.CustomDataGridView();
+            this.dataGridViewOne = new FileManager.FilesDataGridView();
             this.panelOneChoseDisk = new System.Windows.Forms.Panel();
-            this.dataGridViewTwo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTwo = new FileManager.FilesDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelTwoChoseDisk = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -75,7 +75,6 @@
             this.panelOneData.Controls.Add(this.dataGridViewOne);
             resources.ApplyResources(this.panelOneData, "panelOneData");
             this.panelOneData.Name = "panelOneData";
-            this.panelOneData.Paint += new System.Windows.Forms.PaintEventHandler(this.panelOneData_Paint);
             // 
             // dataGridViewOne
             // 
@@ -101,11 +100,7 @@
             this.dataGridViewOne.RowHeadersVisible = false;
             this.dataGridViewOne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOne.StandardTab = true;
-            this.dataGridViewOne.TabStop = false;
             this.dataGridViewOne.VirtualMode = true;
-            this.dataGridViewOne.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridViewOne_MouseDown);
-            this.dataGridViewOne.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dataGridViewOne_MouseMove);
-            this.dataGridViewOne.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dataGridViewOne_MouseUp);
             // 
             // panelOneChoseDisk
             // 
@@ -133,9 +128,10 @@
             this.dataGridViewTwo.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTwo.Name = "dataGridViewTwo";
             this.dataGridViewTwo.ReadOnly = true;
-            this.dataGridViewTwo.RowTemplate.ReadOnly = true;
+            this.dataGridViewTwo.RowHeadersVisible = false;
             this.dataGridViewTwo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTwo.TabStop = false;
+            this.dataGridViewTwo.StandardTab = true;
+            this.dataGridViewTwo.VirtualMode = true;
             // 
             // panel2
             // 
@@ -170,6 +166,7 @@
             // 
             resources.ApplyResources(this.buttonTest, "buttonTest");
             this.buttonTest.Name = "buttonTest";
+            this.buttonTest.TabStop = false;
             this.buttonTest.UseVisualStyleBackColor = true;
             // 
             // MainForm
@@ -210,8 +207,8 @@
         private System.Windows.Forms.Panel panelTwoChoseDisk;
         private System.Windows.Forms.Panel panelOneData;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridViewTwo;
-        private CustomDataGridView dataGridViewOne;
+        private FilesDataGridView dataGridViewOne;
+        private FilesDataGridView dataGridViewTwo;
     }
 }
 

@@ -54,7 +54,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\customELements\CustomDataGridView.cs">
+    <Compile Include="src\customElements\CustomDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\customElements\FilesDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
