@@ -9,39 +9,63 @@ using System.Windows.Forms;
 
 namespace FileManager
 {
-    class CustomDataGridView : DataGridView
+    public abstract class CustomDataGridView : DataGridView
     {
         private bool enableDragAndDrop = false;
-        private string testFilePath = @"C:/Users/Azat/Documents/test.txt";
-
+        private bool mouseDownOnRow = false;
         public CustomDataGridView()
         {
             this.MouseMove += CustomMouseMove;
             this.MouseUp += CustomMouseUp;
             this.MouseUp += CustomSelectElement;
             this.MouseLeave += CustomMouseLeave;
+            this.GotFocus += CustomInvokeGotFocus;
+            this.LostFocus += CustomInvokeLostFocus;
             this.ClearSelection();
+        }
+
+        public void CustomInvokeGotFocus(object sender, EventArgs e)
+        {
+            //Focus style
+        }
+
+        public void CustomInvokeLostFocus(object sender, EventArgs e)
+        {
+            // lost focus 
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            //base.OnMouseDown(e);
+            int mouseHoverRowIndex = this.HitTest(e.X, e.Y).RowIndex;
+            mouseDownOnRow = mouseHoverRowIndex != -1;
+            //При нажатии на строчку не передаём дальше 
+            if (!mouseDownOnRow)
+            {
+                base.OnMouseDown(e);
+            }
         }
+
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            this.mouseDownOnRow = false;
+            base.OnMouseUp(e);
+        }
+
+        public abstract List<string> CurrentSelectedFiles();
 
         private void CustomMouseMove(object sender, MouseEventArgs e)
         {
-
-            if (!enableDragAndDrop && (e.Button & MouseButtons.Left) == MouseButtons.Left)
+            if (!enableDragAndDrop && (e.Button & MouseButtons.Left) == MouseButtons.Left && mouseDownOnRow)
             {
-                Console.WriteLine("Enable drag and drop");
                 enableDragAndDrop = true;
-                string[] files = new String[1];
-                files[0] = testFilePath;
-                DataObject data = new DataObject(DataFormats.FileDrop, files);
-                data.SetData(DataFormats.StringFormat, files[0]);
-                DoDragDrop(data, DragDropEffects.Copy);
+                string[] files = this.CurrentSelectedFiles().ToArray();
+                if (files.Length > 0)
+                {
+                    DataObject data = new DataObject(DataFormats.FileDrop, files);
+                    data.SetData(DataFormats.StringFormat, files[0]);
+                    DoDragDrop(data, DragDropEffects.Copy);
+                }
             }
-
         }
 
         private void CustomSelectElement(object sender, MouseEventArgs e)
@@ -80,22 +104,22 @@ namespace FileManager
 
         public static DataTable GetDataTable(string[,] data)
         {
-            if (data.GetLength(0) == 0)
-            {
-                throw new ArgumentException("data is empty");
-            }
+
             DataTable table = new DataTable();
 
-            for (int i = 0; i < data.GetLength(1); i++)
+            if (data.GetLength(0) != 0)
             {
-                table.Columns.Add();
-            }
-            for (int i = 0; i < data.GetLength(0); i++)
-            {
-                table.Rows.Add(table.NewRow());
-                for (int j = 0; j < data.GetLength(1); j++)
+                for (int i = 0; i < data.GetLength(1); i++)
                 {
-                    table.Rows[i][j] = data[i, j];
+                    table.Columns.Add();
+                }
+                for (int i = 0; i < data.GetLength(0); i++)
+                {
+                    table.Rows.Add(table.NewRow());
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        table.Rows[i][j] = data[i, j];
+                    }
                 }
             }
             return table;
@@ -103,22 +127,23 @@ namespace FileManager
 
         public static DataTable GetDataTable(List<List<string>> data)
         {
-            if (data.Count == 0)
-            {
-                throw new ArgumentException("data is empty");
-            }
+
             DataTable table = new DataTable();
 
-            data.First().ForEach(element => table.Columns.Add());
-
-            for (int i = 0; i < data.Count; i++)
+            if (data.Count != 0)
             {
-                table.Rows.Add(table.NewRow());
-                for (int j = 0; j < data.First().Count; j++)
+                data.First().ForEach(element => table.Columns.Add());
+
+                for (int i = 0; i < data.Count; i++)
                 {
-                    table.Rows[i][j] = data[i][j];
+                    table.Rows.Add(table.NewRow());
+                    for (int j = 0; j < data.First().Count; j++)
+                    {
+                        table.Rows[i][j] = data[i][j];
+                    }
                 }
             }
+
             return table;
         }
 

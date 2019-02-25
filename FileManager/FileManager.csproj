@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,6 +64,24 @@
     <Compile Include="src\customElements\FilesDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\InputQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\InputQuestion.Designer.cs">
+      <DependentUpon>InputQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\PathQuestions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\PathQuestions.Designer.cs">
+      <DependentUpon>PathQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Question.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Question.Designer.cs">
+      <DependentUpon>Question.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +94,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="src\InputQuestion.resx">
+      <DependentUpon>InputQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\PathQuestions.resx">
+      <DependentUpon>PathQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Question.resx">
+      <DependentUpon>Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
