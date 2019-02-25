@@ -34,6 +34,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panelOneData = new System.Windows.Forms.Panel();
             this.panelOneChoseDisk = new System.Windows.Forms.Panel();
+            this.panelForLabelOne = new System.Windows.Forms.Panel();
             this.comboBoxOne = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelTwoChoseDisk = new System.Windows.Forms.Panel();
@@ -48,20 +49,25 @@
             this.buttonMove = new System.Windows.Forms.Button();
             this.buttonChangeFolderName = new System.Windows.Forms.Button();
             this.buttonCopy = new System.Windows.Forms.Button();
+            this.labelOne = new System.Windows.Forms.Label();
             this.dataGridViewOne = new FileManager.FilesDataGridView();
             this.dataGridViewTwo = new FileManager.FilesDataGridView();
+            this.panelForLabelTwo = new System.Windows.Forms.Panel();
+            this.labelTwo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panelOneData.SuspendLayout();
             this.panelOneChoseDisk.SuspendLayout();
+            this.panelForLabelOne.SuspendLayout();
             this.panelTwoChoseDisk.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
+            this.panelForLabelTwo.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -89,9 +95,16 @@
             // 
             // panelOneChoseDisk
             // 
+            this.panelOneChoseDisk.Controls.Add(this.panelForLabelOne);
             this.panelOneChoseDisk.Controls.Add(this.comboBoxOne);
             resources.ApplyResources(this.panelOneChoseDisk, "panelOneChoseDisk");
             this.panelOneChoseDisk.Name = "panelOneChoseDisk";
+            // 
+            // panelForLabelOne
+            // 
+            resources.ApplyResources(this.panelForLabelOne, "panelForLabelOne");
+            this.panelForLabelOne.Controls.Add(this.labelOne);
+            this.panelForLabelOne.Name = "panelForLabelOne";
             // 
             // comboBoxOne
             // 
@@ -110,7 +123,8 @@
             // panelTwoChoseDisk
             // 
             resources.ApplyResources(this.panelTwoChoseDisk, "panelTwoChoseDisk");
-            this.panelTwoChoseDisk.BackColor = System.Drawing.Color.White;
+            this.panelTwoChoseDisk.BackColor = System.Drawing.SystemColors.Control;
+            this.panelTwoChoseDisk.Controls.Add(this.panelForLabelTwo);
             this.panelTwoChoseDisk.Controls.Add(this.comboBoxTwo);
             this.panelTwoChoseDisk.Name = "panelTwoChoseDisk";
             // 
@@ -197,12 +211,18 @@
             this.buttonCopy.TabStop = false;
             this.buttonCopy.UseVisualStyleBackColor = true;
             // 
+            // labelOne
+            // 
+            resources.ApplyResources(this.labelOne, "labelOne");
+            this.labelOne.Name = "labelOne";
+            this.labelOne.UseCompatibleTextRendering = true;
+            // 
             // dataGridViewOne
             // 
             this.dataGridViewOne.AllowDrop = true;
             this.dataGridViewOne.AllowUserToAddRows = false;
             this.dataGridViewOne.AllowUserToDeleteRows = false;
-            this.dataGridViewOne.AllowUserToOrderColumns = true;
+            this.dataGridViewOne.AllowUserToResizeRows = false;
             this.dataGridViewOne.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewOne.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewOne.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -256,6 +276,18 @@
             this.dataGridViewTwo.StandardTab = true;
             this.dataGridViewTwo.VirtualMode = true;
             // 
+            // panelForLabelTwo
+            // 
+            resources.ApplyResources(this.panelForLabelTwo, "panelForLabelTwo");
+            this.panelForLabelTwo.Controls.Add(this.labelTwo);
+            this.panelForLabelTwo.Name = "panelForLabelTwo";
+            // 
+            // labelTwo
+            // 
+            resources.ApplyResources(this.labelTwo, "labelTwo");
+            this.labelTwo.Name = "labelTwo";
+            this.labelTwo.UseCompatibleTextRendering = true;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -274,6 +306,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.panelOneData.ResumeLayout(false);
             this.panelOneChoseDisk.ResumeLayout(false);
+            this.panelForLabelOne.ResumeLayout(false);
+            this.panelForLabelOne.PerformLayout();
             this.panelTwoChoseDisk.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -281,6 +315,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).EndInit();
+            this.panelForLabelTwo.ResumeLayout(false);
+            this.panelForLabelTwo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,6 +343,10 @@
         private System.Windows.Forms.Button buttonMove;
         private System.Windows.Forms.Button buttonChangeFolderName;
         private System.Windows.Forms.Button buttonCopy;
+        private System.Windows.Forms.Panel panelForLabelOne;
+        private System.Windows.Forms.Label labelOne;
+        private System.Windows.Forms.Panel panelForLabelTwo;
+        private System.Windows.Forms.Label labelTwo;
     }
 }
 

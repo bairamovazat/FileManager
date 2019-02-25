@@ -21,6 +21,8 @@ namespace FileManager
             this.MouseLeave += CustomMouseLeave;
             this.GotFocus += CustomInvokeGotFocus;
             this.LostFocus += CustomInvokeLostFocus;
+            this.DragEnter += CustomDragEnter;
+            this.DragDrop += CustomDragDrop;
             this.ClearSelection();
         }
 
@@ -52,6 +54,21 @@ namespace FileManager
         }
 
         public abstract List<string> CurrentSelectedFiles();
+
+        public abstract void DragDropFiles(List<string> files);
+
+        private void CustomDragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+        }
+
+        private void CustomDragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            
+                DragDropFiles(new List<string>(files));
+            
+        }
 
         private void CustomMouseMove(object sender, MouseEventArgs e)
         {

@@ -61,6 +61,9 @@
     <Compile Include="src\customElements\CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\customElements\FilesDataGridViewWorkWithFiles.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\customElements\FilesDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>

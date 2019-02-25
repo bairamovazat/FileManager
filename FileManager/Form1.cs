@@ -20,14 +20,21 @@ namespace FileManager
             dataGridViewOne.GotFocus += (sender, e) => lastFocusedFileDataGridView = dataGridViewOne;
             dataGridViewTwo.GotFocus += (sender, e) => lastFocusedFileDataGridView = dataGridViewTwo;
 
+            dataGridViewOne.UpdateView += (dataGrid) => labelOne.Text = dataGrid.GetCurrentPath();
+            dataGridViewTwo.UpdateView += (dataGrid) => labelTwo.Text = dataGrid.GetCurrentPath();
+
+            dataGridViewOne.GlobalErrorHandler += (ex) => MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            dataGridViewTwo.GlobalErrorHandler += (ex) => MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             Bind(dataGridViewOne, comboBoxOne);
             Bind(dataGridViewTwo, comboBoxTwo);
 
             dataGridViewOne.UpdateDrives();
             dataGridViewTwo.UpdateDrives();
 
+
             dataGridViewOne.Focus();
-           
+
         }
 
         public void Bind(FilesDataGridView filesDataGridView, ComboBox comboBox)
@@ -103,7 +110,7 @@ namespace FileManager
                {
                    if (answer)
                    {
-                     
+
                        focused.CreateSubDirectory(newDirName);
                        focused.Focus();
                    }
@@ -117,7 +124,8 @@ namespace FileManager
         private void buttonMove_Click(object sender, EventArgs e)
         {
             FilesDataGridView focused = lastFocusedFileDataGridView;
-            if (focused.SelectedRows.Count == 0) {
+            if (focused.SelectedRows.Count == 0)
+            {
                 MessageBox.Show("Выберите хотябы 1 элемент!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -127,7 +135,8 @@ namespace FileManager
                {
                    if (answer)
                    {
-                       foreach (DataGridViewRow row in focused.SelectedRows) {
+                       foreach (DataGridViewRow row in focused.SelectedRows)
+                       {
                            focused.MoveRow(row, newDirName);
                        }
                        focused.Focus();
@@ -137,6 +146,11 @@ namespace FileManager
                 Owner = this,
                 StartPosition = FormStartPosition.CenterParent
             }.ShowDialog();
+        }
+
+        public void ShowError(Exception ex)
+        {
+            MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
