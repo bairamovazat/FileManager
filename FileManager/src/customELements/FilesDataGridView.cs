@@ -18,69 +18,19 @@ namespace FileManager
         public event Action<List<DriveInfo>> UpdateDrivesHandler;
         public event Action<FilesDataGridView> UpdateView;
         public event Action<Exception> GlobalErrorHandler;
-        private ISettingCache cache = new SettingCacheFakeImpl();
+
         private FileSystemWatcher fileWatcher = new FileSystemWatcher();
-
-        public ISettingCache Cache { get => cache; set => cache = value; }
-        public DriveInfo CurrentDrive { get => currentDrive; set => currentDrive = value; }
-
         private delegate void UpdateDirectory();
-        private bool firstUpdateDrivers = true;
 
         public FilesDataGridView()
         {
-            Console.WriteLine(Properties.Settings.Default);
             this.MouseDoubleClick += CustomSelectElement;
-
-            this.UpdateDrivesHandler += (drives) =>
-            {
-                this.driveList = drives;
-                if (firstUpdateDrivers)
-                {
-                    UpdateDriveAndDirectoryListFromCache();
-                    /**TODO Пофиксить
-                    * Тут большой костыль из-за того, что после загрузкт Drive и Path из кеша 
-                    * происходит обновление комбобокса Form1.Bind.UpdateDrivesHandler на указанный в this.currentDrive
-                    * на это событие срабатывает Form1.Bind.SelectedIndexChanged и устанвливает новый драйвер,
-                    * который удаляет текущий Path = new List(), если не высталять условие driveInfo != currentDrive.
-                    * Но при этом условии при Form1.Bind.UpdateDrivesHandler comboBox.SelectedIndex = i
-                    * не происходит обновление UpdateDirectoryView, как это предполагалось изначально
-                    **/
-                    UpdateDirectoryView();
-                    firstUpdateDrivers = false;
-                }
-            };
-
+            this.UpdateDrivesHandler += (drives) => this.driveList = drives;
             UpdateDirectory updateDirectory = UpdateDirectoryView;
-
             fileWatcher.Changed += (sender, e) => this.Invoke(updateDirectory);
             fileWatcher.Created += (sender, e) => this.Invoke(updateDirectory);
             fileWatcher.Deleted += (sender, e) => this.Invoke(updateDirectory);
             fileWatcher.Renamed += (sender, e) => this.Invoke(updateDirectory);
-        }
-
-        public void UpdateDriveAndDirectoryListFromCache()
-        {
-            string previousDriveName = Cache.LastDriverName();
-            DriveInfo previousDrive = this.driveList.Find(d => d.Name.Equals(previousDriveName));
-            if (previousDrive == null)
-            {
-                currentDrive = driveList[0];
-                return;
-            }
-            else
-            {
-                currentDrive = previousDrive;
-            }
-
-            List<string> directoryList = Cache.LastPath();
-            string previousDirectory = previousDriveName + String.Join("", directoryList);
-            DirectoryInfo directoryInfo = new DirectoryInfo(previousDirectory);
-
-            if (directoryInfo.Exists)
-            {
-                currentDirectoryList = directoryList;
-            }
         }
 
         public void UpdateWatcher()
@@ -107,11 +57,6 @@ namespace FileManager
             {
                 throw new ArgumentNullException("Не найден drive");
             }
-            else if (currentDrive != null && driveInfo == currentDrive)
-            {
-                return;
-            }
-
             SetCurrentDrive(driveInfo);
         }
 
@@ -155,18 +100,10 @@ namespace FileManager
             {
                 directoryInfo = new DirectoryInfo(GetCurrentPath());
                 UpdateWatcher();
-                UpdateCache();
             }
-
             Console.WriteLine(directoryInfo.FullName);
 
             List<List<string>> data = new List<List<string>>();
-            List<string> header = new List<string>();
-            header.Add("Название");
-            header.Add("Тип");
-            header.Add("Размер");
-            data.Add(header);
-
             if (currentDirectoryList.Count != 0)
             {
                 List<string> goBackRow = new List<string>();
@@ -211,12 +148,6 @@ namespace FileManager
             this.currentDrive = driveInfo;
             this.currentDirectoryList.Clear();
             this.UpdateDirectoryView();
-        }
-
-        private void UpdateCache()
-        {
-            this.Cache.SaveLastDriverName(this.currentDrive.Name);
-            this.Cache.SaveLastPath(this.currentDirectoryList);
         }
 
         //----START Action control-----//
@@ -348,11 +279,11 @@ namespace FileManager
             {
                 if (type.ToLower().Equals("папка"))
                 {
-                    MoveDirectory(this.GetCurrentPath() + name, destinationDir + @"\" + name);
+                    MoveDirectory(this.GetCurrentPath() + name, destinationDir + @"/" + name);
                 }
                 else if (type.ToLower().Equals("файл"))
                 {
-                    MoveFile(this.GetCurrentPath() + name, destinationDir + @"\" + name);
+                    MoveFile(this.GetCurrentPath() + name, destinationDir + @"/" + name);
                 }
                 else
                 {
@@ -369,11 +300,11 @@ namespace FileManager
             {
                 if (type.ToLower().Equals("папка"))
                 {
-                    CopyDirectory(this.GetCurrentPath() + name, destinationDir + @"\" + name);
+                    CopyDirectory(this.GetCurrentPath() + name, destinationDir + @"/" + name);
                 }
                 else if (type.ToLower().Equals("файл"))
                 {
-                    CopyFile(this.GetCurrentPath() + name, destinationDir + @"\" + name);
+                    CopyFile(this.GetCurrentPath() + name, destinationDir + @"/" + name);
                 }
                 else
                 {
@@ -381,31 +312,8 @@ namespace FileManager
                 }
             });
         }
-
-        public void RanameRow(DataGridViewRow row, string newName)
-        {
-            string name = row.Cells[0].Value.ToString();
-            string type = row.Cells[1].Value.ToString();
-            ProcessException(() =>
-            {
-                if (type.ToLower().Equals("папка"))
-                {
-                    RenameDirectory(this.GetCurrentPath() + name, this.GetCurrentPath() + newName);
-                }
-                else if (type.ToLower().Equals("файл"))
-                {
-                    RenameFile(this.GetCurrentPath() + name, this.GetCurrentPath() + newName);
-                }
-                else
-                {
-                    throw new ArgumentNullException("Тип файла не опознан");
-                }
-            });
-        }
-
-
         //----END File/Directory work-----//
-
+    
         private void ProcessException(Action action)
         {
             try

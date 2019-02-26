@@ -13,8 +13,6 @@ namespace FileManager
     {
         private bool enableDragAndDrop = false;
         private bool mouseDownOnRow = false;
-        public List<int> ColumnsWidth = new List<int>() {10, 10, 10};
-
         public CustomDataGridView()
         {
             this.MouseMove += CustomMouseMove;
@@ -67,9 +65,9 @@ namespace FileManager
         private void CustomDragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-
-            DragDropFiles(new List<string>(files));
-
+            
+                DragDropFiles(new List<string>(files));
+            
         }
 
         private void CustomMouseMove(object sender, MouseEventArgs e)
@@ -111,59 +109,54 @@ namespace FileManager
             enableDragAndDrop = false;
         }
 
-        //public void SetData(string[,] data)
-        //{
-        //    this.DataSource = GetDataTable(data);
-        //}
+        public void SetData(string[,] data)
+        {
+            this.DataSource = GetDataTable(data);
+        }
 
         public void SetData(List<List<string>> data)
         {
             this.DataSource = GetDataTable(data);
         }
 
-        //public static DataTable GetDataTable(string[,] data)
-        //{
+        public static DataTable GetDataTable(string[,] data)
+        {
 
-        //    DataTable table = new DataTable();
+            DataTable table = new DataTable();
 
-        //    if (data.GetLength(0) != 0)
-        //    {
-        //        for (int i = 0; i < data.GetLength(1); i++)
-        //        {
-        //            table.Columns.Add();
-        //        }
-        //        for (int i = 0; i < data.GetLength(0); i++)
-        //        {
-        //            table.Rows.Add(table.NewRow());
-        //            for (int j = 0; j < data.GetLength(1); j++)
-        //            {
-        //                table.Rows[i][j] = data[i, j];
-        //            }
-        //        }
-        //    }
-        //    return table;
-        //}
+            if (data.GetLength(0) != 0)
+            {
+                for (int i = 0; i < data.GetLength(1); i++)
+                {
+                    table.Columns.Add();
+                }
+                for (int i = 0; i < data.GetLength(0); i++)
+                {
+                    table.Rows.Add(table.NewRow());
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        table.Rows[i][j] = data[i, j];
+                    }
+                }
+            }
+            return table;
+        }
 
         public static DataTable GetDataTable(List<List<string>> data)
         {
+
             DataTable table = new DataTable();
 
             if (data.Count != 0)
             {
-                data.First().ForEach(element =>
+                data.First().ForEach(element => table.Columns.Add());
+
+                for (int i = 0; i < data.Count; i++)
                 {
-                    DataColumn column = table.Columns.Add();
-                    column.ColumnName = element;
-                });
-                if (data.Count > 1)
-                {
-                    for (int i = 1; i < data.Count; i++)
+                    table.Rows.Add(table.NewRow());
+                    for (int j = 0; j < data.First().Count; j++)
                     {
-                        table.Rows.Add(table.NewRow());
-                        for (int j = 0; j < data.First().Count; j++)
-                        {
-                            table.Rows[i - 1][j] = data[i][j];
-                        }
+                        table.Rows[i][j] = data[i][j];
                     }
                 }
             }

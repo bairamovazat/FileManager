@@ -45,21 +45,11 @@ namespace FileManager
         //----START move-----//
         private static void MoveDirectory(string sourceDirName, string destDirName)
         {
-            DirectoryInfo sourceDirectory = new DirectoryInfo(sourceDirName);
-            DirectoryInfo destDirectory = new DirectoryInfo(destDirName);
             if (destDirName.Contains(sourceDirName))
             {
                 throw new ArgumentException("Конечная папка, в которую следует поместить файлы, является дочерней для папки, в которой она находится.");
             }
-            if (sourceDirectory.Root.Equals(destDirectory.Root))
-            {
-                Directory.Move(sourceDirName, destDirName);
-            }
-            else
-            {
-                CopyDirectory(sourceDirName, destDirName);
-                DeleteFolder(sourceDirName);
-            }
+            Directory.Move(sourceDirName, destDirName);
         }
 
         private static void MoveFile(string sourceFile, string destinationFile)
@@ -67,18 +57,6 @@ namespace FileManager
             File.Move(sourceFile, destinationFile);
         }
         //----END move-----//
-
-        //----START rename-----//
-        private static void RenameDirectory(string sourceDirName, string destDirName)
-        {
-            Directory.Move(sourceDirName, destDirName);
-        }
-
-        private static void RenameFile(string sourceFile, string destinationFile)
-        {
-            File.Move(sourceFile, destinationFile);
-        }
-        //----END rename-----//
 
         //----START copy-----//
         private static void CopyDirectory(string sourceDirName, string destDirName)
@@ -111,7 +89,6 @@ namespace FileManager
             File.Copy(sourceFile, destinationFile);
         }
         //----END copy-----//
-
 
         private static string GetFileSize(FileInfo file)
         {

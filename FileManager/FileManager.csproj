@@ -37,9 +37,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
-      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -70,12 +67,6 @@
     <Compile Include="src\customElements\FilesDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Editor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Editor.Designer.cs">
-      <DependentUpon>Editor.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\InputQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,10 +85,16 @@
     <Compile Include="src\Question.Designer.cs">
       <DependentUpon>Question.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="src\SettingsCache.cs" />
     <Compile Include="src\SettingsCacheIniImpl.cs" />
     <Compile Include="src\SettingsCachePropertyImpl.cs" />
     <Compile Include="src\Utils.cs" />
+=======
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> parent of ea1ca53... First release
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,9 +104,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="src\Editor.resx">
-      <DependentUpon>Editor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\InputQuestion.resx">
       <DependentUpon>InputQuestion.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,7 +116,6 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

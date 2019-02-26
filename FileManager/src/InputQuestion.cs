@@ -14,13 +14,10 @@ namespace FileManager
     {
         private Action<bool, string> resultFunction;
 
-        public InputQuestion(string text, string inputValue, Action<bool, string> resultFunction)
+        public InputQuestion(string text, Action<bool, string> resultFunction)
         {
             this.resultFunction = resultFunction;
             InitializeComponent();
-            if (inputValue != null) {
-                textBox.Text = inputValue;
-            }
             this.labelText.Text = text;
         }
 
