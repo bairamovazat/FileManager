@@ -128,8 +128,8 @@
   <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="dataGridViewOne.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="dataGridViewOne.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="dataGridViewOne.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -573,37 +573,37 @@
   <data name="&gt;&gt;buttonRename.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="buttonDelet.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="buttonDelete.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="buttonDelet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonDelet.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
     <value>476, 0</value>
   </data>
-  <data name="buttonDelet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="buttonDelet.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 30</value>
   </data>
-  <data name="buttonDelet.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonDelete.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="buttonDelet.Text" xml:space="preserve">
+  <data name="buttonDelete.Text" xml:space="preserve">
     <value>F8 Удаление</value>
   </data>
-  <data name="&gt;&gt;buttonDelet.Name" xml:space="preserve">
-    <value>buttonDelet</value>
+  <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
+    <value>buttonDelete</value>
   </data>
-  <data name="&gt;&gt;buttonDelet.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonDelet.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonDelete.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;buttonDelet.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="buttonNewFolder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -672,37 +672,37 @@
   <data name="&gt;&gt;buttonMove.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="buttonChangeFolderName.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="buttonEditFile.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="buttonChangeFolderName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonEditFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonChangeFolderName.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonEditFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 0</value>
   </data>
-  <data name="buttonChangeFolderName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonEditFile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="buttonChangeFolderName.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonEditFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 30</value>
   </data>
-  <data name="buttonChangeFolderName.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonEditFile.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="buttonChangeFolderName.Text" xml:space="preserve">
+  <data name="buttonEditFile.Text" xml:space="preserve">
     <value>F5 Редактирование</value>
   </data>
-  <data name="&gt;&gt;buttonChangeFolderName.Name" xml:space="preserve">
-    <value>buttonChangeFolderName</value>
+  <data name="&gt;&gt;buttonEditFile.Name" xml:space="preserve">
+    <value>buttonEditFile</value>
   </data>
-  <data name="&gt;&gt;buttonChangeFolderName.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonEditFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonChangeFolderName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonEditFile.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;buttonChangeFolderName.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonEditFile.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="buttonCopy.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -766,7 +766,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonRename" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="buttonDelet" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="buttonNewFolder" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="buttonMove" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonChangeFolderName" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonCopy" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="buttonRename" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="buttonDelete" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="buttonNewFolder" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="buttonMove" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="buttonEditFile" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="buttonCopy" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667,Percent,16,66667" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -806,6 +806,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>715, 568</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>FileManager</value>

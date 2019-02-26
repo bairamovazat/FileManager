@@ -38,6 +38,9 @@ namespace FileManager
             Bind(dataGridViewOne, comboBoxOne);
             Bind(dataGridViewTwo, comboBoxTwo);
 
+            BindFocus(dataGridViewOne, panelOneChoseDisk);
+            BindFocus(dataGridViewTwo, panelTwoChoseDisk);
+
             dataGridViewOne.UpdateDrives();
             dataGridViewTwo.UpdateDrives();
 
@@ -111,15 +114,55 @@ namespace FileManager
             };
         }
 
+        public void BindFocus(FilesDataGridView dataGrid, Panel panel)
+        {
+            dataGrid.GotFocus += (source, e) => {
+                panel.BackColor = SystemColors.ActiveCaption;
+            };
+            dataGrid.LostFocus += (source, e) => {
+                panel.BackColor = SystemColors.Control;
+            };
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData.Equals(Keys.F4))
+            {
+                this.buttonCopy.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F5))
+            {
+                this.buttonDelete.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F6))
+            {
+                this.buttonMove.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F7))
+            {
+                this.buttonNewFolder.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F8))
+            {
+                this.buttonDelete.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F9))
+            {
+                this.buttonMove.PerformClick();
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            Keys key = (keyData & Keys.KeyCode);
+            //Keys key = (keyData & Keys.KeyCode);
 
-            if (key == Keys.Tab)
-            {
-                GetFocusedDataGridView().Focus();
-                return true;
-            }
+            //if (key == Keys.Tab)
+            //{
+            //    GetFocusedDataGridView().Focus();
+            //    return true;
+            //}
             return base.ProcessDialogKey(keyData);
         }
 
@@ -148,8 +191,8 @@ namespace FileManager
                         {
                             focused.DeleteRow(row);
                         }
-                        focused.Focus();
                     }
+                    focused.Focus();
                 })
             {
                 Owner = this,
@@ -167,8 +210,8 @@ namespace FileManager
                    {
 
                        focused.CreateSubDirectory(newDirName);
-                       focused.Focus();
                    }
+                   focused.Focus();
                })
             {
                 Owner = this,
@@ -194,8 +237,8 @@ namespace FileManager
                        {
                            focused.MoveRow(row, newDirName);
                        }
-                       focused.Focus();
                    }
+                   focused.Focus();
                })
             {
                 Owner = this,
@@ -221,8 +264,8 @@ namespace FileManager
                       {
                           focused.CopyRow(row, newDirName);
                       }
-                      focused.Focus();
                   }
+                  focused.Focus();
               })
             {
                 Owner = this,
@@ -265,6 +308,7 @@ namespace FileManager
                   {
                       File.WriteAllText(filePath, changedData);
                   }
+                  focused.Focus();
               })
             {
                 Owner = this,
@@ -295,8 +339,8 @@ namespace FileManager
                    if (answer)
                    {
                        focused.RanameRow(focused.SelectedRows[0], newName);
-                       focused.Focus();
                    }
+                   focused.Focus();
                })
             {
                 Owner = this,
