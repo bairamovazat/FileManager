@@ -58,6 +58,35 @@ namespace FileManager
             };
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData.Equals(Keys.F4)) {
+                this.buttonCopy.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F5))
+            {
+                this.buttonEditFile.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F6))
+            {
+                this.buttonMove.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F7))
+            {
+                this.buttonNewFolder.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F8))
+            {
+                this.buttonDelete.PerformClick();
+            }
+            else if (keyData.Equals(Keys.F9))
+            {
+                this.buttonMove.PerformClick();
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void LoadSizeFromCache()
         {
             int width = settingsCache.Width;
