@@ -20,6 +20,7 @@ namespace FileManager
         public MainForm()
         {
             InitializeComponent();
+            BindCmdRuner();
             settingsCache = new SettingsCacheIniImpl();
             LoadSizeFromCache();
             LoadPositionFromCache();
@@ -59,6 +60,12 @@ namespace FileManager
                 settingsCache.XPosition = this.Location.X;
                 settingsCache.YPosition = this.Location.Y;
             };
+            this.MouseMove += (sender, e) =>
+            {
+                if (Clipboard.ContainsFileDropList()) {
+                    Console.WriteLine(Clipboard.GetFileDropList());
+                }
+            };
         }
 
         private void LoadSizeFromCache()
@@ -76,7 +83,8 @@ namespace FileManager
             }
         }
 
-        private void LoadPositionFromCache() {
+        private void LoadPositionFromCache()
+        {
             int xPosition = settingsCache.XPosition;
             int yPosition = settingsCache.YPosition;
 
@@ -124,10 +132,12 @@ namespace FileManager
 
         public void BindFocus(FilesDataGridView dataGrid, Panel panel)
         {
-            dataGrid.GotFocus += (source, e) => {
+            dataGrid.GotFocus += (source, e) =>
+            {
                 panel.BackColor = SystemColors.ActiveCaption;
             };
-            dataGrid.LostFocus += (source, e) => {
+            dataGrid.LostFocus += (source, e) =>
+            {
                 panel.BackColor = SystemColors.Control;
             };
         }
@@ -382,6 +392,20 @@ namespace FileManager
 
                 SaveLastPath = new Action<List<string>>((list) => settingsCache.SaveLastPathTwo(list))
             };
+        }
+
+        private void textBoxCmdRun_MouseEnter(object sender, EventArgs e)
+        {
+            this.RunCmdFromTextBoxCmdRun();
+        }
+
+        private void textBoxCmdRun_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+
+            {
+                this.RunCmdFromTextBoxCmdRun();
+            }
         }
     }
 }

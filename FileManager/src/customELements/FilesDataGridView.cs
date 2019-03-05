@@ -18,6 +18,8 @@ namespace FileManager
         public event Action<List<DriveInfo>> UpdateDrivesHandler;
         public event Action<FilesDataGridView> UpdateView;
         public event Action<Exception> GlobalErrorHandler;
+        public event Action<string, string> UpdateSelectedElement;
+
         private ISettingCache cache = new SettingCacheFakeImpl();
         private FileSystemWatcher fileWatcher = new FileSystemWatcher();
 
@@ -64,6 +66,11 @@ namespace FileManager
             fileWatcher.Created += (sender, e) => this.Invoke(updateDirectory);
             fileWatcher.Deleted += (sender, e) => this.Invoke(updateDirectory);
             fileWatcher.Renamed += (sender, e) => this.Invoke(updateDirectory);
+
+            this.SelectionChanged += (sender, e) =>
+            {
+                UpdateSelectedElement?.Invoke(this.CurrentRow.Cells[0].Value.ToString(), this.GetCurrentPath());
+            };
         }
 
         public void UpdateDriveAndDirectoryListFromCache()

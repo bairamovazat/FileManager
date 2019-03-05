@@ -25,6 +25,7 @@ namespace FileManager
             this.LostFocus += CustomInvokeLostFocus;
             this.DragEnter += CustomDragEnter;
             this.DragDrop += CustomDragDrop;
+            this.AllowDrop = true;
             this.ClearSelection();
         }
 
@@ -62,18 +63,20 @@ namespace FileManager
         private void CustomDragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+            else e.Effect = DragDropEffects.None;
         }
 
         private void CustomDragDrop(object sender, DragEventArgs e)
+
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-
             DragDropFiles(new List<string>(files));
-
         }
 
         private void CustomMouseMove(object sender, MouseEventArgs e)
         {
+            var files2 = Clipboard.GetFileDropList();
+
             if (!enableDragAndDrop && (e.Button & MouseButtons.Left) == MouseButtons.Left && mouseDownOnRow)
             {
                 enableDragAndDrop = true;
@@ -98,6 +101,7 @@ namespace FileManager
                 }
                 DataGridViewRow row = this.Rows[index];
                 row.Selected = !row.Selected;
+                this.CurrentCell = row.Cells[0];
             }
         }
 

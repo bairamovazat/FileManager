@@ -35,12 +35,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panelOneData = new System.Windows.Forms.Panel();
-            this.dataGridViewOne = new FileManager.FilesDataGridView();
             this.panelOneChoseDisk = new System.Windows.Forms.Panel();
             this.panelForLabelOne = new System.Windows.Forms.Panel();
             this.labelOne = new System.Windows.Forms.Label();
             this.comboBoxOne = new System.Windows.Forms.ComboBox();
-            this.dataGridViewTwo = new FileManager.FilesDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelTwoChoseDisk = new System.Windows.Forms.Panel();
             this.panelForLabelTwo = new System.Windows.Forms.Panel();
@@ -56,29 +54,39 @@
             this.buttonMove = new System.Windows.Forms.Button();
             this.buttonEditFile = new System.Windows.Forms.Button();
             this.buttonCopy = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelCmdRun = new System.Windows.Forms.Label();
+            this.textBoxCmdRun = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewOne = new FileManager.FilesDataGridView();
+            this.dataGridViewTwo = new FileManager.FilesDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panelOneData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             this.panelOneChoseDisk.SuspendLayout();
             this.panelForLabelOne.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
             this.panelTwoChoseDisk.SuspendLayout();
             this.panelForLabelTwo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
+            this.splitContainer1.AllowDrop = true;
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.AllowDrop = true;
             this.splitContainer1.Panel1.Controls.Add(this.panelOneData);
             this.splitContainer1.Panel1.Controls.Add(this.panelOneChoseDisk);
             // 
@@ -91,45 +99,10 @@
             // 
             // panelOneData
             // 
+            this.panelOneData.AllowDrop = true;
             this.panelOneData.Controls.Add(this.dataGridViewOne);
             resources.ApplyResources(this.panelOneData, "panelOneData");
             this.panelOneData.Name = "panelOneData";
-            // 
-            // dataGridViewOne
-            // 
-            this.dataGridViewOne.AllowDrop = true;
-            this.dataGridViewOne.AllowUserToAddRows = false;
-            this.dataGridViewOne.AllowUserToDeleteRows = false;
-            this.dataGridViewOne.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewOne, "dataGridViewOne");
-            this.dataGridViewOne.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewOne.BackgroundColor = System.Drawing.Color.White;
-            settingCacheFakeImpl1.LastDriverName = null;
-            settingCacheFakeImpl1.LastPath = null;
-            settingCacheFakeImpl1.SaveLastDriverName = null;
-            settingCacheFakeImpl1.SaveLastPath = null;
-            this.dataGridViewOne.Cache = settingCacheFakeImpl1;
-            this.dataGridViewOne.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewOne.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dataGridViewOne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOne.CurrentDrive = null;
-            this.dataGridViewOne.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewOne.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewOne.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewOne.GridColor = System.Drawing.Color.Black;
-            this.dataGridViewOne.Name = "dataGridViewOne";
-            this.dataGridViewOne.ReadOnly = true;
-            this.dataGridViewOne.RowHeadersVisible = false;
-            this.dataGridViewOne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOne.StandardTab = true;
-            this.dataGridViewOne.VirtualMode = true;
             // 
             // panelOneChoseDisk
             // 
@@ -158,41 +131,6 @@
             resources.ApplyResources(this.comboBoxOne, "comboBoxOne");
             this.comboBoxOne.Name = "comboBoxOne";
             this.comboBoxOne.TabStop = false;
-            // 
-            // dataGridViewTwo
-            // 
-            this.dataGridViewTwo.AllowDrop = true;
-            this.dataGridViewTwo.AllowUserToAddRows = false;
-            this.dataGridViewTwo.AllowUserToDeleteRows = false;
-            this.dataGridViewTwo.AllowUserToResizeRows = false;
-            resources.ApplyResources(this.dataGridViewTwo, "dataGridViewTwo");
-            this.dataGridViewTwo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewTwo.BackgroundColor = System.Drawing.Color.White;
-            settingCacheFakeImpl2.LastDriverName = null;
-            settingCacheFakeImpl2.LastPath = null;
-            settingCacheFakeImpl2.SaveLastDriverName = null;
-            settingCacheFakeImpl2.SaveLastPath = null;
-            this.dataGridViewTwo.Cache = settingCacheFakeImpl2;
-            this.dataGridViewTwo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewTwo.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dataGridViewTwo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTwo.CurrentDrive = null;
-            this.dataGridViewTwo.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTwo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTwo.GridColor = System.Drawing.Color.Black;
-            this.dataGridViewTwo.Name = "dataGridViewTwo";
-            this.dataGridViewTwo.ReadOnly = true;
-            this.dataGridViewTwo.RowHeadersVisible = false;
-            this.dataGridViewTwo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTwo.StandardTab = true;
-            this.dataGridViewTwo.VirtualMode = true;
             // 
             // panel2
             // 
@@ -305,11 +243,109 @@
             this.buttonCopy.UseVisualStyleBackColor = true;
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.labelCmdRun);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            // 
+            // labelCmdRun
+            // 
+            resources.ApplyResources(this.labelCmdRun, "labelCmdRun");
+            this.labelCmdRun.Name = "labelCmdRun";
+            this.labelCmdRun.UseCompatibleTextRendering = true;
+            // 
+            // textBoxCmdRun
+            // 
+            resources.ApplyResources(this.textBoxCmdRun, "textBoxCmdRun");
+            this.textBoxCmdRun.Name = "textBoxCmdRun";
+            this.textBoxCmdRun.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCmdRun_KeyPress);
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxCmdRun, 1, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // dataGridViewOne
+            // 
+            this.dataGridViewOne.AllowDrop = true;
+            this.dataGridViewOne.AllowUserToAddRows = false;
+            this.dataGridViewOne.AllowUserToDeleteRows = false;
+            this.dataGridViewOne.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewOne, "dataGridViewOne");
+            this.dataGridViewOne.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewOne.BackgroundColor = System.Drawing.Color.White;
+            settingCacheFakeImpl1.LastDriverName = null;
+            settingCacheFakeImpl1.LastPath = null;
+            settingCacheFakeImpl1.SaveLastDriverName = null;
+            settingCacheFakeImpl1.SaveLastPath = null;
+            this.dataGridViewOne.Cache = settingCacheFakeImpl1;
+            this.dataGridViewOne.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewOne.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dataGridViewOne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOne.CurrentDrive = null;
+            this.dataGridViewOne.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewOne.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewOne.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewOne.GridColor = System.Drawing.Color.Black;
+            this.dataGridViewOne.Name = "dataGridViewOne";
+            this.dataGridViewOne.ReadOnly = true;
+            this.dataGridViewOne.RowHeadersVisible = false;
+            this.dataGridViewOne.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewOne.StandardTab = true;
+            this.dataGridViewOne.VirtualMode = true;
+            // 
+            // dataGridViewTwo
+            // 
+            this.dataGridViewTwo.AllowDrop = true;
+            this.dataGridViewTwo.AllowUserToAddRows = false;
+            this.dataGridViewTwo.AllowUserToDeleteRows = false;
+            this.dataGridViewTwo.AllowUserToResizeRows = false;
+            resources.ApplyResources(this.dataGridViewTwo, "dataGridViewTwo");
+            this.dataGridViewTwo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTwo.BackgroundColor = System.Drawing.Color.White;
+            settingCacheFakeImpl2.LastDriverName = null;
+            settingCacheFakeImpl2.LastPath = null;
+            settingCacheFakeImpl2.SaveLastDriverName = null;
+            settingCacheFakeImpl2.SaveLastPath = null;
+            this.dataGridViewTwo.Cache = settingCacheFakeImpl2;
+            this.dataGridViewTwo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewTwo.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.dataGridViewTwo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTwo.CurrentDrive = null;
+            this.dataGridViewTwo.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTwo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTwo.GridColor = System.Drawing.Color.Black;
+            this.dataGridViewTwo.Name = "dataGridViewTwo";
+            this.dataGridViewTwo.ReadOnly = true;
+            this.dataGridViewTwo.RowHeadersVisible = false;
+            this.dataGridViewTwo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTwo.StandardTab = true;
+            this.dataGridViewTwo.VirtualMode = true;
+            // 
             // MainForm
             // 
+            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -322,11 +358,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panelOneData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).EndInit();
             this.panelOneChoseDisk.ResumeLayout(false);
             this.panelForLabelOne.ResumeLayout(false);
             this.panelForLabelOne.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).EndInit();
             this.panelTwoChoseDisk.ResumeLayout(false);
             this.panelForLabelTwo.ResumeLayout(false);
             this.panelForLabelTwo.PerformLayout();
@@ -334,6 +368,12 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,6 +404,10 @@
         private System.Windows.Forms.Label labelOne;
         private System.Windows.Forms.Panel panelForLabelTwo;
         private System.Windows.Forms.Label labelTwo;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label labelCmdRun;
+        private System.Windows.Forms.TextBox textBoxCmdRun;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
 

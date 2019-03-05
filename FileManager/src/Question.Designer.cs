@@ -74,6 +74,7 @@
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.labelText);
             this.Name = "Questions";
+            this.Text = "Внимание!";
             this.ResumeLayout(false);
 
         }

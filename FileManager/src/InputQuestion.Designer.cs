@@ -85,6 +85,7 @@
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.labelText);
             this.Name = "InputQuestion";
+            this.Text = "Введите текст";
             this.ResumeLayout(false);
             this.PerformLayout();
 

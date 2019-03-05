@@ -69,7 +69,7 @@
             // 
             // textBox
             // 
-            this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox.Enabled = false;
             this.textBox.Location = new System.Drawing.Point(41, 55);
@@ -82,9 +82,9 @@
             this.buttonSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSelectFile.Location = new System.Drawing.Point(268, 55);
             this.buttonSelectFile.Name = "buttonSelectFile";
-            this.buttonSelectFile.Size = new System.Drawing.Size(56, 20);
+            this.buttonSelectFile.Size = new System.Drawing.Size(64, 20);
             this.buttonSelectFile.TabIndex = 6;
-            this.buttonSelectFile.Text = "Файл";
+            this.buttonSelectFile.Text = "Выбрать";
             this.buttonSelectFile.UseVisualStyleBackColor = true;
             this.buttonSelectFile.Click += new System.EventHandler(this.buttonSelectFile_Click);
             // 
@@ -99,6 +99,7 @@
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.labelText);
             this.Name = "PathQuestions";
+            this.Text = "Введите путь";
             this.ResumeLayout(false);
             this.PerformLayout();
 
