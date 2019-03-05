@@ -92,7 +92,15 @@ namespace FileManager
             filesDataGridView.UpdateDrivesHandler += (driverInfoList) =>
             {
                 comboBox.Items.Clear();
-                driverInfoList.ForEach(info => comboBox.Items.Add(info.Name));
+                List<DriveInfo> filteredDriveInfo = new List<DriveInfo>();
+                driverInfoList.ForEach(drive =>
+                {
+                    if (drive.IsReady)
+                    {
+                        filteredDriveInfo.Add(drive);
+                    }
+                });
+                filteredDriveInfo.ForEach(info => comboBox.Items.Add(info.Name));
 
                 if (comboBox.SelectedIndex == -1)
                 {

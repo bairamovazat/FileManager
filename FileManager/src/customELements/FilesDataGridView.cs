@@ -34,7 +34,14 @@ namespace FileManager
 
             this.UpdateDrivesHandler += (drives) =>
             {
-                this.driveList = drives;
+                List<DriveInfo> filteredDriveInfo = new List<DriveInfo>();
+                drives.ForEach(drive =>
+                {
+                    if (drive.IsReady) {
+                        filteredDriveInfo.Add(drive);
+                    }
+                });
+                this.driveList = filteredDriveInfo;
                 if (firstUpdateDrivers)
                 {
                     UpdateDriveAndDirectoryListFromCache();

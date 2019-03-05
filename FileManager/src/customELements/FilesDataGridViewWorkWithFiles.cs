@@ -45,6 +45,10 @@ namespace FileManager
         //----START move-----//
         private static void MoveDirectory(string sourceDirName, string destDirName)
         {
+            if (sourceDirName.Equals(destDirName))
+            {
+                return;
+            }
             DirectoryInfo sourceDirectory = new DirectoryInfo(sourceDirName);
             DirectoryInfo destDirectory = new DirectoryInfo(destDirName);
             if (destDirName.Contains(sourceDirName))
@@ -64,6 +68,9 @@ namespace FileManager
 
         private static void MoveFile(string sourceFile, string destinationFile)
         {
+            if (sourceFile.Equals(destinationFile)) {
+                return;
+            }
             File.Move(sourceFile, destinationFile);
         }
         //----END move-----//
@@ -71,11 +78,19 @@ namespace FileManager
         //----START rename-----//
         private static void RenameDirectory(string sourceDirName, string destDirName)
         {
+            if (sourceDirName.Equals(destDirName))
+            {
+                return;
+            }
             Directory.Move(sourceDirName, destDirName);
         }
 
         private static void RenameFile(string sourceFile, string destinationFile)
         {
+            if (sourceFile.Equals(destinationFile))
+            {
+                return;
+            }
             File.Move(sourceFile, destinationFile);
         }
         //----END rename-----//
@@ -83,6 +98,10 @@ namespace FileManager
         //----START copy-----//
         private static void CopyDirectory(string sourceDirName, string destDirName)
         {
+            if (sourceDirName.Equals(destDirName))
+            {
+                return;
+            }
             CopyFolder(sourceDirName, destDirName);
         }
 
@@ -108,6 +127,10 @@ namespace FileManager
 
         private static void CopyFile(string sourceFile, string destinationFile)
         {
+            if (sourceFile.Equals(destinationFile))
+            {
+                return;
+            }
             File.Copy(sourceFile, destinationFile);
         }
         //----END copy-----//
